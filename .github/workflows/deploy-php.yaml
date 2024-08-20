@@ -35,7 +35,7 @@ jobs:
     steps:
       # Paso 1: Checkout del código fuente
       - name: Checkout code
-        uses: actions/checkout@v3  # Utiliza la acción oficial para clonar el repositorio en el runner
+        uses: actions/checkout@v4  # Utiliza la acción oficial para clonar el repositorio en el runner
 
       # Paso 2: Configuración del agente SSH
       - name: Setup SSH
