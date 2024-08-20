@@ -39,7 +39,7 @@ jobs:
 
       # Paso 2: Configuración del agente SSH
       - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.8.1  # Utiliza la acción para configurar el agente SSH en el runner
+        uses: webfactory/ssh-agent@v0.9.0  # Utiliza la acción para configurar el agente SSH en el runner
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}  # Proporciona la clave privada SSH almacenada en los secretos del repositorio
 
