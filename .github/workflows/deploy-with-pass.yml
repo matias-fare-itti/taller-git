@@ -1,0 +1,23 @@
+name: Basic Deploy PHP to Windows Server
+
+on:
+  push:
+    branches:
+      - main
+      - taller-git
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install SSH client
+        run: sudo apt-get install -y sshpass
+
+      - name: Deploy to Windows Server
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "Remove-Item -Recurse -Force C:\Users\Administrator\Documents*"
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" scp -r ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:C:\Users\Administrator\Document
