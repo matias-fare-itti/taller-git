@@ -20,4 +20,4 @@ jobs:
       - name: Deploy to Windows Server
         run: |
           sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "Remove-Item -Recurse -Force C:\Users\Administrator\Documents*"
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" scp -r ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:C:\Users\Administrator\Document
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" scp -r ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:C:\Users\Administrator\Documents
