@@ -21,6 +21,7 @@ jobs:
 
       - name: Deploy to Windows Server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "powershell Remove-Item -Recurse -Force C:\inetpub\wwwroot\*"
+          ssh -o StrictHostKeyChecking=no -v ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "powershell Remove-Item -Recurse -Force C:\inetpub\wwwroot\*"
           scp -r ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:C:\inetpub\wwwroot
+
 
