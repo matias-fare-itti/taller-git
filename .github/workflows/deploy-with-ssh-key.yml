@@ -18,9 +18,11 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Deploy to Windows Server
+      - name: Delete Files on Windows Server
         run: |
           ssh -o StrictHostKeyChecking=no -v ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "powershell Remove-Item -Recurse -Force C:\inetpub\wwwroot\*"
+      
+      - name: Copy to Windows Server
+        run: |
           scp -r ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:C:\inetpub\wwwroot
-
 
