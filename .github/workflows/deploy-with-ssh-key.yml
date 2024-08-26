@@ -22,7 +22,13 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -v ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "powershell Remove-Item -Recurse -Force C:\inetpub\wwwroot\*"
       
-      - name: Copy to Windows Server
-        run: |
-          scp -r ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:C:\inetpub\wwwroot
+      - name: copy file via ssh key
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: 22
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: .
+          target: C:\inetpub\wwwroot
 
