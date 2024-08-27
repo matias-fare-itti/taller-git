@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - taller-git
+      - dev
 
 jobs:
   deploy:
