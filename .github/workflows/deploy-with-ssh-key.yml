@@ -4,12 +4,11 @@ on:
   push:
     branches:
       - main
-      - taller-git
-      - dev
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: prod
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
