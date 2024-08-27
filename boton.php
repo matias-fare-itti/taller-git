@@ -12,7 +12,7 @@
     </style>
     <script>
         function changeColor() {
-            const colors = ['red', 'blue', 'green', 'purple', 'orange'];
+            const colors = ['red', 'blue'];
             const textElement = document.getElementById('text');
             const currentColor = textElement.style.color;
             let newColor = colors[Math.floor(Math.random() * colors.length)];
